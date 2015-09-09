@@ -4,14 +4,13 @@ const {
   Redirect
 } = ReactRouter;
 
-const {
-  history
-} = ReactRouter.lib.BrowserHistory;
+const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)()
 
 Meteor.startup(function() {
   let AppRoutes = (
     <Router history={history}>
       <Route component={App}>
+        <Router component={Home} path="/" />
         <Router component={Butler} path="/butler" />
       </Route>
     </Router>
